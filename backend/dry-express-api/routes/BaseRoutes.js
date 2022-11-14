@@ -11,22 +11,22 @@ class BaseRoutes {
         };
     }
 
-    initGetRoute(path, middlewares = [], methodName) {
-        return this.app.get(`/${this.baseUrl}/${path}`, middlewares, this[methodName]);
+    initGetRoute(path, middlewares = [], method) {
+        return this.app.get(`/${this.baseUrl}/${path}`, middlewares, method);
     }
 
-    initPostRoute(path, middlewares = [], methodName) {
-        return this.app.post(`/${this.baseUrl}/${path}`, middlewares, this[methodName]);
+    initPostRoute(path, middlewares = [], method) {
+        return this.app.post(`/${this.baseUrl}/${path}`, middlewares, method);
     }
 
-    initDeleteRoute(path, middlewares = [], methodName) {
-        return this.app.delete(`/${this.baseUrl}/${path}`, middlewares, this[methodName]);
+    initDeleteRoute(path, middlewares = [], method) {
+        return this.app.delete(`/${this.baseUrl}/${path}`, middlewares, method);
     }
 
     initializeRoutes(methods = ['get', 'post', 'delete']) {
-        methods.includes('get') && this.initGetRoute('', [], 'rootGet')
-        methods.includes('post') && this.initPostRoute('', [this.middlewares.authMiddleware], 'rootPost')
-        methods.includes('delete') && this.initDeleteRoute('', [this.middlewares.authMiddleware], 'rootDelete')
+        methods.includes('get') && this.initGetRoute('', [], this.rootGet)
+        methods.includes('post') && this.initPostRoute('', [this.middlewares.authMiddleware], this.rootPost)
+        methods.includes('delete') && this.initDeleteRoute('', [this.middlewares.authMiddleware], this.rootDelete)
     }
 
     rootGet = (req, res, next) => {
