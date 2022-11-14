@@ -16,13 +16,24 @@ class UserRoutes extends BaseRoutes {
     }
 
     initializeRoutes() {
-        super.initializeRoutes();
+        super.initializeRoutes(['get', 'delete']);
 
         this.initGetRoute('custom', [this.middlewares.authMiddleware, this.middlewares.userMiddleware], 'customGet')
-        this.initPostRoute('', [this.middlewares.authMiddleware], 'rootPost')
+        this.initPostRoute('', [this.middlewares.authMiddleware, this.middlewares.userMiddleware], 'rootPost')
     }
 
-    customGet(req, res, next) {
+    rootPost = (req, res, next) => {
+        const body = req.body;
+        res.json({
+            overridenInController: true,
+            entity: this.entity.update(
+                1,
+                body
+            )
+        });
+    };
+
+    customGet = (req, res, next) => {
         res.json({custom: true});
     }
 }
