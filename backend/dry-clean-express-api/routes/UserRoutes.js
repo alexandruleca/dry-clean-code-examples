@@ -20,20 +20,25 @@ class UserRoutes extends BaseRoutes {
         }
     }
 
+    /*
+        This is where you override the BaseRoutes function to include the routes you want to use in the current
+        collection that extends BaseRoutes.
+     */
     initializeRoutes() {
         // Exclude post from the default endpoint mapping because we also want to add the userMiddleware to it.
         super.initializeRoutes([REQUEST_METHODS.GET, REQUEST_METHODS.DELETE]);
 
         // Because we excluded the default post route at the previous line we need to initialize it separately here.
-        this.initPostRoute('', [this.middlewares.authMiddleware, this.middlewares.userMiddleware], this.rootPost)
-        this.initGetRoute('custom', [this.middlewares.authMiddleware, this.middlewares.userMiddleware], this.customGet)
+        this.initPostRoute('', [this.middlewares.authMiddleware, this.middlewares.userMiddleware], this.post)
+        // Register the custom get action that is available for the user routes collection.
+        this.initGetRoute('custom', [this.middlewares.authMiddleware, this.middlewares.userMiddleware], this.getCustomAction)
     }
 
     /*
         This is how you override the rootPost method from BaseRoutes, you can make it something different
         from the original handler.
      */
-    rootPost = (req, res, next) => {
+    post = (req, res, next) => {
         const body = req.body;
         res.json({
             overridenInController: true,
@@ -47,7 +52,7 @@ class UserRoutes extends BaseRoutes {
     /*
         A custom get method only available in the User Routes collection.
      */
-    customGet = (req, res, next) => {
+    getCustomAction = (req, res, next) => {
         res.json({custom: true});
     }
 }

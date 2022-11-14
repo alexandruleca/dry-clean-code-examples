@@ -45,15 +45,15 @@ class BaseRoutes {
         Route initialization method that maps methods to rotes using routing mapper methods above.
      */
     initializeRoutes(methods = [REQUEST_METHODS.GET, REQUEST_METHODS.POST, REQUEST_METHODS.DELETE]) {
-        methods.includes(REQUEST_METHODS.GET) && this.initGetRoute('', [], this.rootGet)
-        methods.includes(REQUEST_METHODS.POST) && this.initPostRoute('', [this.middlewares.authMiddleware], this.rootPost)
-        methods.includes(REQUEST_METHODS.DELETE) && this.initDeleteRoute('', [this.middlewares.authMiddleware], this.rootDelete)
+        methods.includes(REQUEST_METHODS.GET) && this.initGetRoute('', [], this.get)
+        methods.includes(REQUEST_METHODS.POST) && this.initPostRoute('', [this.middlewares.authMiddleware], this.post)
+        methods.includes(REQUEST_METHODS.DELETE) && this.initDeleteRoute('', [this.middlewares.authMiddleware], this.delete)
     }
 
     /*
         Default route get handler
      */
-    rootGet = (req, res, next) => {
+    get = (req, res, next) => {
         res.json({
             entity: this.entity.get(1)
         });
@@ -62,7 +62,7 @@ class BaseRoutes {
     /*
         Default route post handler
      */
-    rootPost = (req, res, next) => {
+    post = (req, res, next) => {
         const body = req.body;
         res.json({
             entity: this.entity.update(
@@ -75,7 +75,7 @@ class BaseRoutes {
     /*
         Default route delete handler
      */
-    rootDelete = (req, res, next) => {
+    delete = (req, res, next) => {
         res.json({
             deleted: this.entity.delete(1)
         });
