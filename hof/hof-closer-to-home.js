@@ -60,7 +60,6 @@ function createFilters() {
             delete _filters.fns[name]
         },
         filter(arr) {
-            const filters = _filters.ids.map((id) => _filters.fns[id])
             return arr.reduce((acc, item) => {
                 for (let index = 0; index < _filters.ids.length; index++) {
                     const id = _filters.ids[index]
