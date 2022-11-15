@@ -2,7 +2,7 @@
 
 Some cases of code and how it can be transformed to follow reusable patterns and other best practices.
 
-## Worthy abbreviations
+## Noteworthy definitions
 
 - RY = repeat yourself
 - DRY = don't repeat yourself
