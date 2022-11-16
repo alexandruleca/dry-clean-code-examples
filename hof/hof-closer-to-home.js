@@ -84,4 +84,6 @@ function createFilters() {
 const filterHelper = createFilters()
 filterHelper.addFilter('fat-frogs', availableObjectFilters.greaterThanOrEquals("weight", 8))
 filterHelper.addFilter('male-frogs', availableObjectFilters.equals("gender", "male"))
-filterHelper.filter(frogs)
+filterHelper.addFilter('young-frogs', availableObjectFilters.lesserThanOrEquals("age", 3))
+
+console.log(filterHelper.filter(frogs));
