@@ -27,13 +27,15 @@ const BaseComponent = ({data}) => {
     )
 }
 
-const ComponentWithFetch = withFetchData(BaseComponent, '/users/2')
+const UserComponent = withFetchData(BaseComponent, '/users/2')
+const UserListComponent = withFetchData(BaseComponent, '/users')
 
 const App = () => {
 
     return(
         <div className="box">
-            <ComponentWithFetch />
+            <UserComponent />
+            <UserListComponent />
         </div>
     );
 }
