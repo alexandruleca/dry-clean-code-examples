@@ -45,10 +45,9 @@ const TodoList = compose(
 )(BaseTodoList);
 
 const App = () => {
-
     return(
         <div className="box">
-            <TodoList isLoading />
+            <TodoList data={["TODO1"]} isLoading={false} />
         </div>
     );
 }
