@@ -44,18 +44,10 @@ const frogs = [
 ]
 
 const availableObjectFilters = {
-    greaterThanOrEquals: (field, value) => (item) => {
-        return item[field] >= value
-    },
-    lesserThanOrEquals: (field, value) => (item) => {
-        return item[field] <= value
-    },
-    equals: (field, value) => (item) => {
-        return item[field] === value
-    },
-    notEquals: (field, value) => (item) => {
-        return item[field] !== value
-    },
+    greaterThanOrEquals: (field, value) => (item) => item[field] >= value,
+    lesserThanOrEquals: (field, value) => (item) => item[field] <= value,
+    equals: (field, value) => (item) => item[field] === value,
+    notEquals: (field, value) => (item) => item[field] !== value,
 }
 
 function createFilters() {
@@ -93,19 +85,3 @@ const filterHelper = createFilters()
 filterHelper.addFilter('fat-frogs', availableObjectFilters.greaterThanOrEquals("weight", 8))
 filterHelper.addFilter('male-frogs', availableObjectFilters.equals("gender", "male"))
 filterHelper.filter(frogs)
-
-filterHelper.removeFilter('male-frogs')
-filterHelper.filter(frogs)
-
-/*
-const filteredFrogs = frogs
-  .filter((frog) => {
-    return frog.weight >= 8
-  })
-  .filter((frog) => {
-    return frog.gender === 'male'
-  })
-  .filter((frog) => {
-    return frog.name.startsWith('b')
-  })
- */
