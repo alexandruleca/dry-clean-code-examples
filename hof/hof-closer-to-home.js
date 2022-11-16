@@ -43,6 +43,21 @@ const frogs = [
     },
 ]
 
+const availableObjectFilters = {
+    greaterThanOrEquals: (field, value) => (item) => {
+        return item[field] >= value
+    },
+    lesserThanOrEquals: (field, value) => (item) => {
+        return item[field] <= value
+    },
+    equals: (field, value) => (item) => {
+        return item[field] === value
+    },
+    notEquals: (field, value) => (item) => {
+        return item[field] !== value
+    },
+}
+
 function createFilters() {
     const _filters = {
         ids: [],
@@ -75,24 +90,12 @@ function createFilters() {
 }
 
 const filterHelper = createFilters()
-
-filterHelper.addFilter('fat-frogs', (frog) => {
-    return frog.weight >= 8
-})
-
-filterHelper.addFilter('male-frogs', (frog) => {
-    return frog.gender === 'male'
-})
-
-const filteredMaleFatFrogs = filterHelper.filter(frogs)
-
-console.log('Fat male frogs', filteredMaleFatFrogs.length, filteredMaleFatFrogs)
+filterHelper.addFilter('fat-frogs', availableObjectFilters.greaterThanOrEquals("weight", 8))
+filterHelper.addFilter('male-frogs', availableObjectFilters.equals("gender", "male"))
+filterHelper.filter(frogs)
 
 filterHelper.removeFilter('male-frogs')
-
-const filteredFatFrogs = filterHelper.filter(frogs)
-
-console.log('Fat frogs', filteredFatFrogs.length, filteredFatFrogs)
+filterHelper.filter(frogs)
 
 /*
 const filteredFrogs = frogs
