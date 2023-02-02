@@ -12,4 +12,4 @@ new UserRoutes('user', app).initializeRoutes();
 new ProfileRoutes('profile', app).initializeRoutes();
 
 // Start the server
-app.listen(8080);
+app.listen(8080, () => { console.log('started server on port 8080'); });

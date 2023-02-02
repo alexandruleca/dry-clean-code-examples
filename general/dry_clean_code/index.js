@@ -38,6 +38,12 @@ const getProfile = async function () {
 /*
     This is ugly, but it's just for getting the output for this example.
  */
-getUser().then(res => console.log(`User: ${JSON.stringify(res)}`)).catch(err => console.log(err));
-updateUser().then(res => console.log(`Update User: ${JSON.stringify(res)}`)).catch(err => console.log(err));
-getProfile().then(res => console.log(`Profile: ${JSON.stringify(res)}`)).catch(err => console.log(err));
+getUser()
+    .then(res => console.log(`User: ${JSON.stringify(res, null, 4)}`))
+    .catch(err => console.log(err));
+updateUser()
+    .then(res => console.log(`Update User: ${JSON.stringify(res, null, 4)}`))
+    .catch(err => console.log(err));
+getProfile()
+    .then(res => console.log(`Profile: ${JSON.stringify(res, null, 4)}`))
+    .catch(err => console.log(err));

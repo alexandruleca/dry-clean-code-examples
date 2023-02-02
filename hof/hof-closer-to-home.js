@@ -86,4 +86,9 @@ filterHelper.addFilter('fat-frogs', availableObjectFilters.greaterThanOrEquals("
 filterHelper.addFilter('male-frogs', availableObjectFilters.equals("gender", "male"))
 filterHelper.addFilter('young-frogs', availableObjectFilters.lesserThanOrEquals("age", 3))
 
-console.log(filterHelper.filter(frogs));
+console.log('firstOutput', filterHelper.filter(frogs));
+
+filterHelper.removeFilter('male-frogs');
+filterHelper.removeFilter('young-frogs');
+
+console.log('secondOutput', filterHelper.filter(frogs));

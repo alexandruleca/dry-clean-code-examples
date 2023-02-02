@@ -12,6 +12,9 @@ Some cases of code and how it can be transformed to follow reusable patterns and
 - HOF = Higher Order Function
 
 ## Resources
+
+Recommended reading articles with more examples.
+
 - DRY/WET
   - https://blog.boot.dev/clean-code/dry-code/
   - https://thevaluable.dev/dry-principle-cost-benefit-example/
@@ -24,3 +27,5 @@ Some cases of code and how it can be transformed to follow reusable patterns and
 - HOC 
   - https://reactjs.org/docs/higher-order-components.html
   - https://itnext.io/write-better-react-compose-multiple-functional-hocs-higher-order-components-442a11bd2e86
+- SOLID
+  - https://www.baeldung.com/solid-principles
